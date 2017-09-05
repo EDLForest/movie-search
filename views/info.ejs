@@ -1,0 +1,61 @@
+<%include ./partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-sm 12">
+            <div class="thumbnail">
+                <img src="<%= data["Poster"]%>" alt="<%= data["Title"]%>">
+            </div>
+        </div>
+        
+        <div class="col-md-8 col-sm-12">
+            <h3><%= data["Title"]%> - <%= data["Year"] %></strong></h3>
+            <div>
+                <h4 style="display: inline-block">IMDB: <%=data["imdbRating"]%></h4>
+                <h4 style="display: inline-block; margin-left: 15px">Metascore: <%=data["Metascore"]%></h4>
+            </div>
+            
+            
+            <h4><strong>Genre: </strong><%=data["Genre"]%></h4>
+            <h4><strong>Director: </strong><%=data["Director"]%></h4>
+            <h4><strong>Stars: </strong><%=data["Actors"]%></h4>
+            <h4><strong>Rated </strong><%=data["Rated"]%></h4>
+            <h4><strong>Language: </strong><%=data["Language"]%></h4>
+            <h4><strong>Plot: </strong><%=data["Plot"]%></h4>
+            <h4><strong>Country: </strong><%=data["Country"]%></h4>
+            
+        </div>
+    </div>
+    
+        <div class="container">
+        <h1>Related Movies</h1>
+            <div class="row display-flex" style="display:flex; flex-wrap: wrap;">
+                
+                <% list["Search"].forEach(function(movie){ %>
+                    
+                        <div class="col-md-2 col-sm-4 col-lg-2">
+                           <div class="thumbnail">
+                                <img src="<%= movie["Poster"]%>" alt="<%= movie["Title"]%>">
+                                <div class="caption">
+                                    <h5><strong><%= movie["Title"]%> - <%= movie["Year"] %></strong></h5>
+                                    
+                                    <form action="/info" method="GET">
+                                    <!--<div class="form-group">-->
+                                    <input type="text" class="form-control hidden" value="<%=movie["imdbID"]%>" name="info">
+                                    <input type="text" class="form-control hidden" value="<%=JSON.stringify(list)%>" name="list">
+                                    <!--</div>-->
+                                    
+                                    <button type="submit" class="btn btn-primary center-block">More info</button>
+                                    </form>
+                                    
+                                </div> 
+                           </div>
+                        </div>
+                <% }); %>
+            </div>
+    </div>
+    
+    
+</div>
+
+<%include ./partials/footer %>
