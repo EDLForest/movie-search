@@ -1,42 +1,52 @@
 <%include ./partials/header %>
     <div class="container">
-        <div class="row display-flex" style="display:flex; flex-wrap: wrap;">
-            
-            <% data["Search"].forEach(function(movie){ %>
+                        <!--<div class="row" style="flex-wrap: wrap">-->
+            <div class="row text-center" style="display:flex; flex-wrap: wrap;">
                 
-                    <div class="col-md-4 col-sm-6 col-lg-4">
-                       <div class="thumbnail">
-                            <img src="<%= movie["Poster"]=="N/A"? 'https:\/\/via.placeholder.com/320x540': movie["Poster"] %>" alt="<%= movie["Title"]%>">
-                            <div class="caption">
-                                <h3><strong><%= movie["Title"]%> - <%= movie["Year"] %></strong></h3>
-                                
-                                <form action="/info" method="GET">
-                                <!--<div class="form-group">-->
-                                <input type="text" class="form-control hidden" value="<%=movie["imdbID"]%>" name="info">
-                                <input type="text" class="form-control hidden" value="<%=JSON.stringify(data)%>" name="list">
-                                <!--</div>-->
-                                
-                                <button type="submit" class="btn btn-primary center-block">More info</button>
-                                </form>
-                                
-                            </div> 
-                       </div>
+                <% for (i=0; i<data["Search"].length-1; i++) {%>
+                <% var movie = data["Search"][i] %>
+                <!--<//% data["Search"].forEach(function(movie){ %>-->
+                    <div class="col-md-4 col-lg-4 col-sm-6 container2">
+                            
+                                <div class="imgthumbnail">
+                                    <img src="<%= movie["Poster"]=="N/A"? 'https:\/\/cdn.browshot.com/static/images/not-found.png': movie["Poster"] %>" alt="<%= movie["Title"]%>">
+                                </div>    
+                                <div class="overlay">
+                                    <h3 class="text"><%= movie["Title"]%> - <%= movie["Year"] %></h3>
+                                                                         <form action="/info" method="GET">
+                                    <!--<div class="form-group">-->
+                                    <input type="text" class="form-control hidden" value="<%=movie["imdbID"]%>" name="info">
+                                    <input type="text" class="form-control hidden" value="<%=JSON.stringify(data)%>" name="list">
+                                    <!--</div>-->
+                                    
+                                    <input type="submit" class="moreInfo">
+                                    </form>
+                                </div>
+                            </a>                
                     </div>
-                
-            <% }); %>
-        </div>
-        
-        <nav aria-label="Page navigation">
-          <ul class="pagination">
-                
-                <li class="page-item"><a class="page-link" href="/results/<%=query%>/<%=page==1?page:page-1;%>" >Previous</a></li>
-                
-                <% for (var i=1; i < Math.ceil(data["totalResults"]/10); i++) { %>
-                
-                    <li class="page-item"><a class="page-link" href="/results/<%=query%>/<%=i%>"> <%=i%> </a></li>
                     
                 <% } %>
-                    <li class="page-item"><a class="page-link" href="/results/<%=query%>/<%=page==(Math.ceil(data["totalResults"]/10))?page:page+1;%>">Next</a></li>
+                
+            </div>
+        
+        <nav aria-label="Page navigation" class="container text-center" id="pagination">
+          <ul class="pagination">
+                
+                <li class="page-item"><a class="page-link" href="/results/<%=query%>/<%=1%>" >First</a></li>
+                <li class="page-item"><a class="page-link" href="/results/<%=query%>/<%=page==1?page:page-1;%>" >Prev</a></li>
+                
+                <% maxPageNum = Math.ceil(data["totalResults"]/9) %>
+                <% page = parseInt(page) %>
+                <% nextPages = (page + 6) %>
+                
+                <% for (var i=(page-6 <= 1? 1:(page-6)); i<=(nextPages >= maxPageNum? maxPageNum:nextPages); i++) { %>
+                    
+                    
+                    <li class="page-item"><a class="page-link" id="<%=(i==page? 'active':'')%>" href="/results/<%=query%>/<%=i%>"> <%=i%> </a></li>
+                    
+                <% } %>
+                    <li class="page-item"><a class="page-link" href="/results/<%=query%>/<%=page==maxPageNum?page:page+1;%>">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="/results/<%=query%>/<%=maxPageNum%>">Last</a></li>
           </ul>
         </nav>
         
@@ -44,5 +54,10 @@
     
 
 <%include ./partials/footer %>
+
+
+
+
+
 
         

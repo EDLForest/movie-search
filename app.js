@@ -27,7 +27,7 @@ app.get("/results/:query/:page", function(req, res){
     var page = req.params.page,
         query = req.params.query;
         
-   
+   console.log("page is: " + page);
     var url = "http://www.omdbapi.com/?s=" + query + "&page=" + page + "&apikey=thewdb";
     request(url, function(error, response, body){
         if(!error && response.statusCode == 200){

@@ -1,0 +1,147 @@
+/*.thumbnail >.wrapper {*/
+/*    position: relative;*/
+/*    max-height: 500px;*/
+/*    overflow-y: hidden;*/
+/*}*/
+
+/*.thumbnail > .wrapper > .thumbnail-overlay {*/
+/*    display: table;*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    right: 0;*/
+    /*margin: 0 auto;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    opacity: 1;*/
+/*}*/
+
+/*.thumbnail > .wrapper > .thumbnail-overlay > h3 {*/
+/*    vertical-align: middle;*/
+/*    color: white;*/
+/*}*/
+
+/*.thumbnail > .wrapper > img {*/
+/*    max-width: 100%;*/
+/*    max-height: 100%;*/
+    
+/*}*/
+
+/*.wrapper:hover > .thumbnail-overlay {*/
+/*  opacity: 0.8;*/
+/*}*/
+
+#active{
+    background: rgb(230, 215, 242);
+}
+
+.imgthumbnail img{
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-position: 50% 50%;
+    margin-bottom: 50px;
+    transition: 1s ease;
+    opacity: 1;
+   -webkit-box-shadow: 10px 10px 13px 0px rgba(227,211,227,1);
+-moz-box-shadow: 10px 10px 13px 0px rgba(227,211,227,1);
+box-shadow: 10px 10px 13px 0px rgba(227,211,227,1);
+}
+
+.container2{
+    height: 500px;
+    margin-bottom: 50px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  opacity: 0.4;
+  background: rgb(110, 41, 153);
+  overflow: hidden;
+  word-wrap: break-word;
+  height: 0;
+  transition: .5s ease;
+  width: 93%;
+}
+
+.container2:hover .overlay {
+  bottom: 0;
+  opacity: 1;
+  height: 500px;
+  background: rgba(230, 215, 242, 0.75);
+}
+
+.overlay> h3 {
+  /*white-space: nowrap; */
+  color: #673b82;
+  /*opacity: 1;*/
+  font-size: 2em;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto; 
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-family: lobster;
+}
+
+.moreInfo {
+    width: 100%;
+    height: 500px;
+    opacity: 0;
+    
+}
+
+
+
+@media (min-width: 375px){
+    .overlay {
+          position: absolute;
+          bottom: 100%;
+          left: 0;
+          right: 0;
+          overflow: hidden;
+          height: 0;
+          transition: .5s ease;
+            width: 96%;
+            margin-left: 2%;
+        }
+
+}
+
+@media (min-width: 768px) {
+    .overlay {
+          position: absolute;
+          bottom: 100%;
+          left: 3;
+          right: 0;
+          overflow: hidden;
+          height: 0;
+          transition: .5s ease;
+            width: 93%;
+            margin-left: 13px;
+        }
+
+}
+
+@media (min-width: 992px) {
+    .overlay {
+          position: absolute;
+          bottom: 100%;
+          left: 3;
+          right: 0;
+          overflow: hidden;
+          height: 0;
+          transition: .5s ease;
+            width: 93%;
+            margin-left: 13px;
+        }
+}
