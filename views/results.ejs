@@ -7,7 +7,7 @@
                 <% var movie = data["Search"][i] %>
                 <!--<//% data["Search"].forEach(function(movie){ %>-->
                     <div class="col-md-4 col-lg-4 col-sm-6 container2">
-                            
+                            <div class="item">
                                 <div class="imgthumbnail">
                                     <img src="<%= movie["Poster"]=="N/A"? 'https:\/\/cdn.browshot.com/static/images/not-found.png': movie["Poster"] %>" alt="<%= movie["Title"]%>">
                                 </div>    
@@ -22,7 +22,9 @@
                                     <input type="submit" class="moreInfo">
                                     </form>
                                 </div>
-                            </a>                
+                              
+                            </div>
+        
                     </div>
                     
                 <% } %>
@@ -42,7 +44,7 @@
                 <% for (var i=(page-6 <= 1? 1:(page-6)); i<=(nextPages >= maxPageNum? maxPageNum:nextPages); i++) { %>
                     
                     
-                    <li class="page-item"><a class="page-link" id="<%=(i==page? 'active':'')%>" href="/results/<%=query%>/<%=i%>"> <%=i%> </a></li>
+                    <li class="page-item"><a class="page-link" id="<%=(i==page? ' active':'')%>" href="/results/<%=query%>/<%=i%>"> <%=i%> </a></li>
                     
                 <% } %>
                     <li class="page-item"><a class="page-link" href="/results/<%=query%>/<%=page==maxPageNum?page:page+1;%>">Next</a></li>
