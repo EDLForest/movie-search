@@ -83,12 +83,12 @@
   bottom: 0;
   opacity: 1;
   height: 500px;
-  background: rgba(230, 215, 242, 0.75);
+  background: rgba(87,63,90,.75);
 }
 
 .overlay> h3 {
   /*white-space: nowrap; */
-  color: #673b82;
+  color: white;
   /*opacity: 1;*/
   font-size: 2em;
   font-weight: 600;
@@ -101,7 +101,7 @@
   margin: 0 auto; 
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  font-family: lobster;
+  font-family: lato;
 }
 
 .moreInfo {
