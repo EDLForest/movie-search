@@ -1,4 +1,8 @@
 .navbar-default{
-    background-color: transparent;
-    border-color: white;
+    background-color: white;
+}
+
+.navbar{
+    border-radius: 0px;
+    margin-bottom: 0px;
 }
